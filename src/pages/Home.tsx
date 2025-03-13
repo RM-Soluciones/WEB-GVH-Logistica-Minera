@@ -9,7 +9,7 @@ const Home = () => {
         <div className="absolute inset-0">
         <video 
           className="w-full h-full object-cover" 
-          src="\public\presentacion.mp4" 
+          src="/public/presentacion.mp4" 
           autoPlay 
           loop 
           muted 
@@ -148,7 +148,7 @@ const Home = () => {
         {/* Replace with your CTA background image - public/img5.jpg */}
         <div className="absolute inset-0">
           <img
-            src="\public\camiones.png"
+            src="/public/camiones.png"
             alt="Mining Equipment"
             className="w-full h-full object-cover"
           />

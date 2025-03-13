@@ -7,7 +7,7 @@ const About = () => {
       <div className="relative py-20 bg-gray-900">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="\public\Nosotros\Servicios.JPG"
+            src="/public/Nosotros/Servicios.JPG"
             alt="Mining Background"
             className="w-full h-full object-cover opacity-20"
           />
@@ -38,7 +38,7 @@ const About = () => {
             </div>
             <div>
               <img
-                src="\public\Nosotros\personal.JPG"
+                src="/public/Nosotros/personal.JPG"
                 alt="Mining Transport"
                 className="rounded-lg shadow-xl"
               />
@@ -79,7 +79,7 @@ const About = () => {
       <div className="relative py-20">
         <div className="absolute inset-0">
           <img
-            src="\public\Nosotros\Servicios.JPG"
+            src="public\Nosotros\Servicios.JPG"
             alt="Mining Operations"
             className="w-full h-full object-cover"
           />
