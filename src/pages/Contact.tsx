@@ -175,7 +175,7 @@ const Contact = () => {
             {/* Map */}
             <div className="h-[400px] w-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.980822578654!2d-77.03196792393798!3d-12.046645188118893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8b5d35662c7%3A0x15f0bbc8026f46d7!2sPlaza%20Mayor%20de%20Lima!5m2!1s0x9105c8b5d35662c7%3A0x15f0bbc8026f46d7"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d879.5261219173157!2d-65.41612270118925!3d-24.823079661117557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bdd2f0b5410e3%3A0x7c2d006d82d943db!2sGVH%20Log%C3%ADstica%20Minera!5e0!3m2!1sen!2sar!4v1741869039127!5m2!1sen!2sar"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -194,8 +194,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900">Dirección</h3>
                     <p className="text-gray-600">
-                      Av. Principal 123<br />
-                      Lima, Perú
+                      Av. Tavella 3663 <br />
+                      Salta, Argentina
                     </p>
                   </div>
                 </div>
@@ -204,7 +204,7 @@ const Contact = () => {
                   <Mail className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">contacto@gvhlogistica.com</p>
+                    <p className="text-gray-600">comercial@gvhlogistica.com</p>
                   </div>
                 </div>
 
@@ -213,7 +213,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900">Horario de Atención</h3>
                     <p className="text-gray-600">
-                      Lunes a Viernes: 8:00 AM - 6:00 PM<br />
+                      Lunes a Viernes: 9:00 AM - 6:00 PM<br />
                       Sábado: 9:00 AM - 1:00 PM
                     </p>
                   </div>

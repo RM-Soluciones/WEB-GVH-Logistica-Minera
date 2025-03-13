@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Users, ArrowRight, Building, Clock } from 'lucide-react';
 
@@ -8,12 +7,14 @@ const Home = () => {
       {/* Hero Section */}
       <div className="relative h-screen">
         <div className="absolute inset-0">
-          {/* Replace with your hero image - public/img1.jpg */}
-          <img
-            className="w-full h-full object-cover"
-            src="/img1.jpg"
-            alt="Mining Operations"
-          />
+        <video 
+          className="w-full h-full object-cover" 
+          src="\public\presentacion.mp4" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        ></video>
           <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-80"></div>
         </div>
         <div className="relative h-full flex items-center">
@@ -44,7 +45,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { number: "10+", label: "Años de Experiencia" },
+              { number: "25+", label: "Años de Experiencia" },
               { number: "100+", label: "Clientes Satisfechos" },
               { number: "50+", label: "Unidades en Flota" },
               { number: "24/7", label: "Atención Permanente" }
@@ -74,19 +75,19 @@ const Home = () => {
                 icon: <Building className="w-12 h-12" />,
                 title: "Transporte de Carga",
                 description: "Transporte especializado de maquinaria pesada y materiales.",
-                image: "/img2.jpg" // Replace with your service image
+                image: "/public/Servicios/cargas.png" 
               },
               {
                 icon: <Shield className="w-12 h-12" />,
                 title: "Rescate y Contingencias",
                 description: "Servicio de rescate minero y respuesta ante emergencias.",
-                image: "/img3.jpg" // Replace with your service image
+                image: "/public/Servicios/Rescate.png" 
               },
               {
                 icon: <Building className="w-12 h-12" />,
                 title: "Rental de Equipos",
                 description: "Alquiler de maquinaria y equipos especializados.",
-                image: "/img4.jpg" // Replace with your service image
+                image: "/public/Servicios/alquiler.png" 
               }
             ].map((service, index) => (
               <div key={index} className="group relative overflow-hidden rounded-xl">
@@ -147,7 +148,7 @@ const Home = () => {
         {/* Replace with your CTA background image - public/img5.jpg */}
         <div className="absolute inset-0">
           <img
-            src="/img5.jpg"
+            src="\public\camiones.png"
             alt="Mining Equipment"
             className="w-full h-full object-cover"
           />

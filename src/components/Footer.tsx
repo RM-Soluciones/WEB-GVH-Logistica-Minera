@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, MapPin } from 'lucide-react';
 import LegalModal from './LegalModal';
 
 const Footer = () => {
@@ -12,9 +12,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              {/* Replace with your logo - public/logo.png */}
               <img 
-                src="/logo.png" 
+                src="public\GVH LOGISTICA MIENRA.png" 
                 alt="GVH Logística Minera" 
                 className="h-12 w-auto"
               />
@@ -39,16 +38,12 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-6 text-orange-500">Contacto</h3>
             <div className="space-y-4">
               <p className="flex items-center space-x-3 text-gray-400">
-                <Phone size={18} />
-                <span>+51 123 456 789</span>
-              </p>
-              <p className="flex items-center space-x-3 text-gray-400">
                 <Mail size={18} />
-                <span>contacto@gvhlogistica.com</span>
+                <span>info@gvhlogistica.com</span>
               </p>
               <p className="flex items-center space-x-3 text-gray-400">
                 <MapPin size={18} />
-                <span>Lima, Perú</span>
+                <span>Salta, Argentina</span>
               </p>
             </div>
           </div>
@@ -57,7 +52,7 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-6 text-orange-500">Horario de Atención</h3>
             <div className="text-gray-400">
               <p className="mb-2">Lunes a Viernes</p>
-              <p className="font-semibold mb-4">8:00 AM - 6:00 PM</p>
+              <p className="font-semibold mb-4">9:00 AM - 6:00 PM</p>
               <p className="mb-2">Sábado</p>
               <p className="font-semibold">9:00 AM - 1:00 PM</p>
               <p className="mt-4 font-semibold text-orange-500">

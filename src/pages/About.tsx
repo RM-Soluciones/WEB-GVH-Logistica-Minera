@@ -1,5 +1,4 @@
-import React from 'react';
-import { Shield, Target, Heart, Clock, Globe, Users } from 'lucide-react';
+import { Shield, Target, Heart, Globe, Users } from 'lucide-react';
 
 const About = () => {
   return (
@@ -7,9 +6,8 @@ const About = () => {
       {/* Hero Section */}
       <div className="relative py-20 bg-gray-900">
         <div className="absolute inset-0 overflow-hidden">
-          {/* Replace with your about hero image - public/img6.jpg */}
           <img
-            src="/img6.jpg"
+            src="\public\Nosotros\Servicios.JPG"
             alt="Mining Background"
             className="w-full h-full object-cover opacity-20"
           />
@@ -39,9 +37,8 @@ const About = () => {
               </p>
             </div>
             <div>
-              {/* Replace with your history image - public/img7.jpg */}
               <img
-                src="/img7.jpg"
+                src="\public\Nosotros\personal.JPG"
                 alt="Mining Transport"
                 className="rounded-lg shadow-xl"
               />
@@ -79,12 +76,10 @@ const About = () => {
         </div>
       </div>
 
-      {/* Características Section with Background Image */}
       <div className="relative py-20">
-        {/* Replace with your features background image - public/img8.jpg */}
         <div className="absolute inset-0">
           <img
-            src="/img8.jpg"
+            src="\public\Nosotros\Servicios.JPG"
             alt="Mining Operations"
             className="w-full h-full object-cover"
           />
@@ -128,7 +123,7 @@ const About = () => {
       <div className="bg-gray-900 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-8">
-            Más de 20 años conectando la minería con el futuro
+            Más de 25 años conectando la minería con el futuro
           </h2>
           <div className="inline-flex space-x-4">
             <a href="/contacto" className="btn-primary">

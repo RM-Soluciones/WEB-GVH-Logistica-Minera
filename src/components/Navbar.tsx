@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserCircle, Menu, X } from 'lucide-react';
 
@@ -10,9 +10,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-2">
-            {/* Replace with your logo - public/logo.png */}
             <img 
-              src="/logo.png" 
+              src="\public\GVH LOGISTICA MIENRA.png" 
               alt="GVH Logística Minera" 
               className="h-12 w-auto"
             />
