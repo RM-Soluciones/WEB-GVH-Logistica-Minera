@@ -44,12 +44,54 @@ const AdminServices = () => {
     }
   };
 
+  const getDirectImageUrl = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+
+      // Google Drive
+      if (urlObj.hostname.includes('drive.google.com')) {
+        const id = url.match(/[-\w]{25,}/);
+        if (id) {
+          return `https://drive.google.com/uc?export=view&id=${id[0]}`;
+        }
+      }
+
+      // Dropbox
+      if (urlObj.hostname.includes('dropbox.com')) {
+        return url.replace('www.dropbox.com', 'dl.dropboxusercontent.com')
+                 .replace('?dl=0', '');
+      }
+
+      // OneDrive
+      if (urlObj.hostname.includes('1drv.ms') || urlObj.hostname.includes('onedrive.live.com')) {
+        return `${url}&download=1`;
+      }
+
+      return url;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return url;
+    }
+  };
+
   const validateImageUrl = (url: string): Promise<boolean> => {
     return new Promise((resolve) => {
+      const directUrl = getDirectImageUrl(url);
       const img = new Image();
-      img.onload = () => resolve(true);
-      img.onerror = () => resolve(false);
-      img.src = url;
+      const timeoutId = setTimeout(() => {
+        img.src = '';
+        resolve(false);
+      }, 5000); // 5 second timeout
+
+      img.onload = () => {
+        clearTimeout(timeoutId);
+        resolve(true);
+      };
+      img.onerror = () => {
+        clearTimeout(timeoutId);
+        resolve(false);
+      };
+      img.src = directUrl;
     });
   };
 
@@ -58,8 +100,9 @@ const AdminServices = () => {
     setLoading(true);
     setImageError(false);
 
-    // Validate image URL
+    const directImageUrl = getDirectImageUrl(formData.image_url);
     const isValidImage = await validateImageUrl(formData.image_url);
+
     if (!isValidImage) {
       setImageError(true);
       setLoading(false);
@@ -67,10 +110,15 @@ const AdminServices = () => {
     }
 
     try {
+      const serviceData = {
+        ...formData,
+        image_url: directImageUrl
+      };
+
       if (currentService) {
         const { error } = await supabase
           .from('services')
-          .update(formData)
+          .update(serviceData)
           .eq('id', currentService.id);
 
         if (error) throw error;
@@ -78,7 +126,7 @@ const AdminServices = () => {
         const maxOrder = Math.max(...services.map(s => s.order), -1);
         const { error } = await supabase
           .from('services')
-          .insert([{ ...formData, order: maxOrder + 1 }]);
+          .insert([{ ...serviceData, order: maxOrder + 1 }]);
 
         if (error) throw error;
       }
@@ -303,7 +351,7 @@ const AdminServices = () => {
                     {formData.image_url && !imageError && (
                       <div className="w-12 h-12 border rounded-lg overflow-hidden">
                         <img
-                          src={formData.image_url}
+                          src={getDirectImageUrl(formData.image_url)}
                           alt="Preview"
                           className="w-full h-full object-cover"
                           onError={() => setImageError(true)}
@@ -314,11 +362,11 @@ const AdminServices = () => {
                   {imageError && (
                     <div className="flex items-center text-red-600 text-sm">
                       <AlertCircle size={16} className="mr-1" />
-                      <span>La URL de la imagen no es válida o no es accesible. Por favor, usa una URL pública de una imagen (ej: Imgur, ImgBB o Unsplash)</span>
+                      <span>La URL de la imagen no es válida o no es accesible. Asegúrate de que la imagen sea pública y accesible.</span>
                     </div>
                   )}
                   <p className="text-sm text-gray-500">
-                    Recomendamos usar servicios como Imgur, ImgBB o Unsplash para alojar las imágenes. Las URLs de Google Drive no funcionarán correctamente.
+                    Puedes usar URLs de Google Drive, Dropbox, OneDrive o cualquier otro servicio de alojamiento de imágenes. Asegúrate de que los enlaces sean públicos y accesibles.
                   </p>
                 </div>
               </div>

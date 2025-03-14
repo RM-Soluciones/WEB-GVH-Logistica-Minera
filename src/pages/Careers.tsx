@@ -167,7 +167,7 @@ const Careers = () => {
 
               <div>
                 <label className="block text-gray-700 font-medium mb-2">
-                  URL del Curriculum (Google Drive, Dropbox, etc.)
+                  URL del Curriculum (Google Drive, Dropbox, etc. (verificar que el link sea publico))
                 </label>
                 <input
                   type="url"

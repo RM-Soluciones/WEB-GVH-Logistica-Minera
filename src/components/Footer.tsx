@@ -6,6 +6,22 @@ const Footer = () => {
   const [isTermsOpen, setIsTermsOpen] = useState(false);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
+  const getDirectImageUrl = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.hostname.includes('dropbox.com')) {
+        return url.replace('www.dropbox.com', 'dl.dropboxusercontent.com')
+                 .replace('?dl=0', '');
+      }
+      return url;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return url;
+    }
+  };
+
+  const logoUrl = getDirectImageUrl("https://www.dropbox.com/scl/fi/0wso1q1xyb34pfcvw3n4g/GVH-LOGISTICA-MIENRA.png?rlkey=233x4vk1z3ebv2jv3grszcx99&st=bruywd9a&dl=0");
+
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,9 +29,9 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <img 
-                src="/public/GVH LOGISTICA MIENRA.png" 
+                src={logoUrl}
                 alt="GVH Logística Minera" 
-                className="h-12 w-auto"
+                className="h-12 w-auto object-contain"
               />
             </div>
             <p className="text-gray-400">

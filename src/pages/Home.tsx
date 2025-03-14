@@ -2,19 +2,39 @@ import { Link } from 'react-router-dom';
 import { Shield, Users, ArrowRight, Building, Clock } from 'lucide-react';
 
 const Home = () => {
+  const getDirectImageUrl = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.hostname.includes('dropbox.com')) {
+        return url.replace('www.dropbox.com', 'dl.dropboxusercontent.com')
+                 .replace('?dl=0', '');
+      }
+      return url;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return url;
+    }
+  };
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
       <div className="relative h-screen">
         <div className="absolute inset-0">
-        <video 
-          className="w-full h-full object-cover" 
-          src="/public/presentacion.mp4" 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-        ></video>
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://images.unsplash.com/photo-1578323851363-cf6c1a0afbb6?auto=format&fit=crop&q=80"
+          >
+            <source
+              src={getDirectImageUrl("https://www.dropbox.com/scl/fi/ewp6lnwdzet9qz508csh8/presentacion.mp4?rlkey=iunllu74rrot8adlirlpdft3o&st=ro68mh5d&dl=0")}
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-80"></div>
         </div>
         <div className="relative h-full flex items-center">
@@ -45,7 +65,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { number: "25+", label: "Años de Experiencia" },
+              { number: "10+", label: "Años de Experiencia" },
               { number: "100+", label: "Clientes Satisfechos" },
               { number: "50+", label: "Unidades en Flota" },
               { number: "24/7", label: "Atención Permanente" }
@@ -75,19 +95,19 @@ const Home = () => {
                 icon: <Building className="w-12 h-12" />,
                 title: "Transporte de Carga",
                 description: "Transporte especializado de maquinaria pesada y materiales.",
-                image: "/public/Servicios/cargas.png" 
+                image: getDirectImageUrl("https://www.dropbox.com/scl/fi/veso4m1m9cjg3opp79236/cargas.png?rlkey=46chfo5d2cbr5rgq9kuhimdc7&st=b94g8ug3&dl=0")
               },
               {
                 icon: <Shield className="w-12 h-12" />,
                 title: "Rescate y Contingencias",
                 description: "Servicio de rescate minero y respuesta ante emergencias.",
-                image: "/public/Servicios/Rescate.png" 
+                image: getDirectImageUrl("https://www.dropbox.com/scl/fi/tnq8c3f1ramdcm9j4vive/Rescate.png?rlkey=pisy0dsfuuvfb9pyptflu4r69&st=s7jyf46r&dl=0")
               },
               {
                 icon: <Building className="w-12 h-12" />,
                 title: "Rental de Equipos",
                 description: "Alquiler de maquinaria y equipos especializados.",
-                image: "/public/Servicios/alquiler.png" 
+                image: getDirectImageUrl("https://www.dropbox.com/scl/fi/e6u6az7y7h0zhj3txxuuk/WhatsApp-Image-2023-07-19-at-23.37.26.jpeg?rlkey=l3xeh35hrlibnggvn0o72dr1b&st=s41i0yf1&dl=0")
               }
             ].map((service, index) => (
               <div key={index} className="group relative overflow-hidden rounded-xl">
@@ -145,10 +165,9 @@ const Home = () => {
 
       {/* CTA Section with Background Image */}
       <div className="relative py-16">
-        {/* Replace with your CTA background image - public/img5.jpg */}
         <div className="absolute inset-0">
           <img
-            src="/public/camiones.png"
+            src={getDirectImageUrl("https://www.dropbox.com/scl/fi/0pe8mmkv0s1a5yhop6ykv/camiones.png?rlkey=zvqnqqvxyatyqjnmwue2wic7x&st=agak7evv&dl=0")}
             alt="Mining Equipment"
             className="w-full h-full object-cover"
           />

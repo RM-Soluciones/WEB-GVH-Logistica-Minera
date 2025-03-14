@@ -5,15 +5,31 @@ import { UserCircle, Menu, X } from 'lucide-react';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const getDirectImageUrl = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.hostname.includes('dropbox.com')) {
+        return url.replace('www.dropbox.com', 'dl.dropboxusercontent.com')
+                 .replace('?dl=0', '');
+      }
+      return url;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return url;
+    }
+  };
+
+  const logoUrl = getDirectImageUrl("https://www.dropbox.com/scl/fi/0wso1q1xyb34pfcvw3n4g/GVH-LOGISTICA-MIENRA.png?rlkey=233x4vk1z3ebv2jv3grszcx99&st=bruywd9a&dl=0");
+
   return (
     <nav className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="\public\GVH LOGISTICA MIENRA.png" 
+              src={logoUrl}
               alt="GVH Logística Minera" 
-              className="h-12 w-auto"
+              className="h-12 w-auto object-contain"
             />
           </Link>
           

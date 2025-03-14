@@ -1,13 +1,27 @@
 import { Shield, Target, Heart, Globe, Users } from 'lucide-react';
 
 const About = () => {
+  const getDirectImageUrl = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.hostname.includes('dropbox.com')) {
+        return url.replace('www.dropbox.com', 'dl.dropboxusercontent.com')
+                 .replace('?dl=0', '');
+      }
+      return url;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return url;
+    }
+  };
+
   return (
     <div>
       {/* Hero Section */}
       <div className="relative py-20 bg-gray-900">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="/public/Nosotros/Servicios.JPG"
+            src={getDirectImageUrl("https://www.dropbox.com/scl/fi/4p4y5o8n7sq8vprj6pxky/Servicios.JPG?rlkey=8r2dp8id2meyosk3xwtwe50dm&st=fo2d645a&dl=0")}
             alt="Mining Background"
             className="w-full h-full object-cover opacity-20"
           />
@@ -38,7 +52,7 @@ const About = () => {
             </div>
             <div>
               <img
-                src="/public/Nosotros/personal.JPG"
+                src={getDirectImageUrl("https://www.dropbox.com/scl/fi/t12t2tqt3gnn4h9g3y0fc/personal.JPG?rlkey=wm3qw76uu982umabzaeprd6s3&st=yrkadook&dl=0")}
                 alt="Mining Transport"
                 className="rounded-lg shadow-xl"
               />
@@ -76,10 +90,11 @@ const About = () => {
         </div>
       </div>
 
+      {/* Características Section with Background Image */}
       <div className="relative py-20">
         <div className="absolute inset-0">
           <img
-            src="public\Nosotros\Servicios.JPG"
+            src={getDirectImageUrl("https://www.dropbox.com/scl/fi/4p4y5o8n7sq8vprj6pxky/Servicios.JPG?rlkey=8r2dp8id2meyosk3xwtwe50dm&st=fo2d645a&dl=0")}
             alt="Mining Operations"
             className="w-full h-full object-cover"
           />
@@ -123,7 +138,7 @@ const About = () => {
       <div className="bg-gray-900 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-8">
-            Más de 25 años conectando la minería con el futuro
+            Más de 20 años conectando la minería con el futuro
           </h2>
           <div className="inline-flex space-x-4">
             <a href="/contacto" className="btn-primary">
