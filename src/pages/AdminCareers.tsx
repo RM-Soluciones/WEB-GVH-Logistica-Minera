@@ -503,51 +503,63 @@ const AdminCareers = () => {
       {/* Modal for viewing application details */}
       {isDetailsModalOpen && currentApplication && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold">Detalles de la Postulación</h3>
-              <button
-                onClick={() => setIsDetailsModalOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                ×
-              </button>
-            </div>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium text-gray-700">Postulante</h4>
-                <p className="text-gray-900">{currentApplication.first_name} {currentApplication.last_name}</p>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-700">Vacante</h4>
-                <p className="text-gray-900">
-                  {vacancies.find(v => v.id === currentApplication.vacancy_id)?.title || 'No disponible'}
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-700">Habilidades y Experiencia</h4>
-                <p className="text-gray-900 whitespace-pre-wrap">{currentApplication.skills}</p>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-700">Fecha de Postulación</h4>
-                <p className="text-gray-900">
-                  {new Date(currentApplication.created_at).toLocaleDateString()}
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-700">Estado</h4>
-                <select
-                  value={currentApplication.status}
-                  onChange={(e) => handleStatusChange(currentApplication.id, e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+          <div className="bg-white rounded-lg w-full max-w-2xl max-h-[90vh] flex flex-col">
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex justify-between items-start">
+                <h3 className="text-xl font-bold">Detalles de la Postulación</h3>
+                <button
+                  onClick={() => setIsDetailsModalOpen(false)}
+                  className="text-gray-500 hover:text-gray-700"
                 >
-                  <option value="pending">Pendiente</option>
-                  <option value="reviewing">En Revisión</option>
-                  <option value="accepted">Aceptado</option>
-                  <option value="rejected">Rechazado</option>
-                </select>
+                  ×
+                </button>
               </div>
-              <div className="flex justify-end space-x-4 pt-4">
+            </div>
+            
+            <div className="p-6 overflow-y-auto flex-grow">
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="font-medium text-gray-700">Postulante</h4>
+                    <p className="text-gray-900">{currentApplication.first_name} {currentApplication.last_name}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-700">Vacante</h4>
+                    <p className="text-gray-900">
+                      {vacancies.find(v => v.id === currentApplication.vacancy_id)?.title || 'No disponible'}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-700">Habilidades y Experiencia</h4>
+                  <div className="mt-2 p-4 bg-gray-50 rounded-lg overflow-y-auto max-h-[200px]">
+                    <p className="text-gray-900 whitespace-pre-wrap">{currentApplication.skills}</p>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-700">Fecha de Postulación</h4>
+                  <p className="text-gray-900">
+                    {new Date(currentApplication.created_at).toLocaleDateString()}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-700">Estado</h4>
+                  <select
+                    value={currentApplication.status}
+                    onChange={(e) => handleStatusChange(currentApplication.id, e.target.value)}
+                    className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                  >
+                    <option value="pending">Pendiente</option>
+                    <option value="reviewing">En Revisión</option>
+                    <option value="accepted">Aceptado</option>
+                    <option value="rejected">Rechazado</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 border-t border-gray-200 bg-gray-50">
+              <div className="flex justify-end space-x-4">
                 <a
                   href={currentApplication.resume_url}
                   target="_blank"
